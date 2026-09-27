@@ -6,6 +6,19 @@ fichier.
 Le format suit [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/),
 et ce projet suit le [Semantic Versioning](https://semver.org/lang/fr/).
 
+## [1.0.3] - 2026-09-27
+
+### Corrigé
+- Widget météo : le message d'erreur sur une réponse Open-Meteo en échec
+  avait été vidé par erreur lors d'une refonte précédente (`throw new
+  Error()` au lieu du message avec code HTTP), rendant l'échec silencieux
+  côté utilisateur.
+
+### Retiré
+- Copie morte `pages/neron.tsx` et `src/hooks/use-weather.ts` à la racine
+  du repo, obsolète depuis la restructuration en `artifacts/neron`
+  (seul package buildé) et divergente de la version active.
+
 ## [1.0.0] - 2026-07-12
 
 Première version stable de l'interface vocale.
