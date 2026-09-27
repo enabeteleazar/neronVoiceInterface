@@ -58,8 +58,8 @@ function getPosition(): Promise<{ lat: number; lon: number }> {
  * basant sur la géolocalisation navigateur, avec repli sur des coordonnées
  * par défaut si la géolocalisation est refusée ou indisponible.
  *
- * Ne renvoie jamais de données inventées : en cas d'échec,  reste
- *  et  est renseigné — à l'appelant de ne pas afficher le
+ * Ne renvoie jamais de données inventées : en cas d'échec, `weather` reste
+ * `null` et `error` est renseigné — à l'appelant de ne pas afficher le
  * widget plutôt que d'afficher une valeur trompeuse.
  */
 export function useWeather(): UseWeatherResult {
@@ -83,7 +83,7 @@ export function useWeather(): UseWeatherResult {
         url.searchParams.set('timezone', 'auto');
 
         const res = await fetch(url.toString());
-        if (!res.ok) throw new Error();
+        if (!res.ok) throw new Error(`Open-Meteo a répondu ${res.status}`);
 
         const data = await res.json();
         const current = data?.current;
